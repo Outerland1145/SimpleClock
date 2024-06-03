@@ -16,6 +16,7 @@ namespace Clock
     {
         private WaveOutEvent waveOut;                       // 宣告音效檔播放器
         private AudioFileReader audioFileReader;            // 宣告音效檔讀取器
+        string strSelectTime;
         public Form1()
         {
             InitializeComponent();
@@ -95,7 +96,7 @@ namespace Clock
         private void btnCancelAlert_Click(object sender, EventArgs e)
         {
             stopWaveOut();     // 停止之前的播放
-            timerAlert.Stop(); // 停止鬧鐘計時器
+            TimerAlert.Stop(); // 停止鬧鐘計時器
             btnSetAlert.Enabled = true;
             btnCancelAlert.Enabled = false;
         }
