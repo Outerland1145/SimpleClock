@@ -15,6 +15,13 @@ namespace Clock
         public Form1()
         {
             InitializeComponent();
+            //timerClcok.Start();
+        }
+        private void timerClcok_Tick(object sender, EventArgs e)
+        {
+            TxtTimer.Text = DateTime.Now.ToString("HH:mm:ss");    // 顯示時間
+            TxtDate.Text = DateTime.Now.ToString("yyyy-MM-dd");  // 顯示日期
+            TxtWeekday.Text = DateTime.Now.ToString("dddd");     // 顯示星期幾
         }
     }
 }
