@@ -29,6 +29,7 @@ namespace Clock
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Clock = new System.Windows.Forms.TabPage();
@@ -42,6 +43,8 @@ namespace Clock
             this.TxtTimer = new System.Windows.Forms.TextBox();
             this.TxtDate = new System.Windows.Forms.TextBox();
             this.TxtWeekday = new System.Windows.Forms.TextBox();
+            this.TimerClock = new System.Windows.Forms.Timer(this.components);
+            this.TimerAlert = new System.Windows.Forms.Timer(this.components);
             this.tabControl1.SuspendLayout();
             this.Clock.SuspendLayout();
             this.SuspendLayout();
@@ -150,27 +153,38 @@ namespace Clock
             this.TxtTimer.Name = "TxtTimer";
             this.TxtTimer.Size = new System.Drawing.Size(695, 87);
             this.TxtTimer.TabIndex = 8;
+            this.TxtTimer.Text = "00:00:00";
             this.TxtTimer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // TxtDate
             // 
             this.TxtDate.Enabled = false;
             this.TxtDate.Font = new System.Drawing.Font("新細明體", 50F);
-            this.TxtDate.Location = new System.Drawing.Point(37, 157);
+            this.TxtDate.Location = new System.Drawing.Point(40, 157);
             this.TxtDate.Name = "TxtDate";
-            this.TxtDate.Size = new System.Drawing.Size(289, 87);
+            this.TxtDate.Size = new System.Drawing.Size(335, 87);
             this.TxtDate.TabIndex = 9;
+            this.TxtDate.Text = "2021-19-31";
             this.TxtDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // TxtWeekday
             // 
             this.TxtWeekday.Enabled = false;
             this.TxtWeekday.Font = new System.Drawing.Font("新細明體", 50F);
-            this.TxtWeekday.Location = new System.Drawing.Point(430, 157);
+            this.TxtWeekday.Location = new System.Drawing.Point(400, 157);
             this.TxtWeekday.Name = "TxtWeekday";
-            this.TxtWeekday.Size = new System.Drawing.Size(305, 87);
+            this.TxtWeekday.Size = new System.Drawing.Size(335, 87);
             this.TxtWeekday.TabIndex = 10;
+            this.TxtWeekday.Text = "星期日";
             this.TxtWeekday.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // TimerClock
+            // 
+            this.TimerClock.Tick += new System.EventHandler(this.TimerClock_Tick_1);
+            // 
+            // TimerAlert
+            // 
+            this.TimerAlert.Tick += new System.EventHandler(this.TimerAlert_Tick);
             // 
             // Form1
             // 
@@ -202,6 +216,8 @@ namespace Clock
         private System.Windows.Forms.TextBox TxtWeekday;
         private System.Windows.Forms.TextBox TxtDate;
         private System.Windows.Forms.TextBox TxtTimer;
+        private System.Windows.Forms.Timer TimerClock;
+        private System.Windows.Forms.Timer TimerAlert;
     }
 }
 
