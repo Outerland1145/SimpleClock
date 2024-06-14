@@ -53,7 +53,7 @@ namespace Clock
             this.btnreset = new System.Windows.Forms.Button();
             this.btnlog = new System.Windows.Forms.Button();
             this.btnstop = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtCountDown = new System.Windows.Forms.TextBox();
             this.cmbCountSec = new System.Windows.Forms.ComboBox();
             this.cmbCountHour = new System.Windows.Forms.ComboBox();
             this.cmbCountMin = new System.Windows.Forms.ComboBox();
@@ -204,7 +204,7 @@ namespace Clock
             this.countdown_timer.Controls.Add(this.cmbCountSec);
             this.countdown_timer.Controls.Add(this.cmbCountHour);
             this.countdown_timer.Controls.Add(this.cmbCountMin);
-            this.countdown_timer.Controls.Add(this.textBox1);
+            this.countdown_timer.Controls.Add(this.txtCountDown);
             this.countdown_timer.Location = new System.Drawing.Point(4, 22);
             this.countdown_timer.Name = "countdown_timer";
             this.countdown_timer.Size = new System.Drawing.Size(768, 400);
@@ -305,16 +305,16 @@ namespace Clock
             this.btnstop.UseVisualStyleBackColor = false;
             this.btnstop.Click += new System.EventHandler(this.btnstop_Click);
             // 
-            // textBox1
+            // txtCountDown
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Font = new System.Drawing.Font("新細明體", 56F);
-            this.textBox1.Location = new System.Drawing.Point(3, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(762, 97);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "00:00:00:000";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCountDown.Enabled = false;
+            this.txtCountDown.Font = new System.Drawing.Font("新細明體", 56F);
+            this.txtCountDown.Location = new System.Drawing.Point(3, 3);
+            this.txtCountDown.Name = "txtCountDown";
+            this.txtCountDown.Size = new System.Drawing.Size(762, 97);
+            this.txtCountDown.TabIndex = 1;
+            this.txtCountDown.Text = "00:00:00";
+            this.txtCountDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // cmbCountSec
             // 
@@ -353,6 +353,7 @@ namespace Clock
             this.btnCountStart.TabIndex = 11;
             this.btnCountStart.Text = "開始";
             this.btnCountStart.UseVisualStyleBackColor = false;
+            this.btnCountStart.Click += new System.EventHandler(this.btnCountStart_Click);
             // 
             // btnCountPause
             // 
@@ -363,6 +364,7 @@ namespace Clock
             this.btnCountPause.TabIndex = 12;
             this.btnCountPause.Text = "暫停";
             this.btnCountPause.UseVisualStyleBackColor = true;
+            this.btnCountPause.Click += new System.EventHandler(this.btnCountPause_Click);
             // 
             // btnCountStop
             // 
@@ -374,6 +376,7 @@ namespace Clock
             this.btnCountStop.TabIndex = 13;
             this.btnCountStop.Text = "停止";
             this.btnCountStop.UseVisualStyleBackColor = false;
+            this.btnCountStop.Click += new System.EventHandler(this.btnCountStop_Click);
             // 
             // timerCountDown
             // 
@@ -424,7 +427,7 @@ namespace Clock
         private System.Windows.Forms.Button btnpause;
         private System.Windows.Forms.Button btnstart;
         private System.Windows.Forms.ListBox listStopWatchLog;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtCountDown;
         private System.Windows.Forms.Button btnCountStop;
         private System.Windows.Forms.Button btnCountPause;
         private System.Windows.Forms.Button btnCountStart;

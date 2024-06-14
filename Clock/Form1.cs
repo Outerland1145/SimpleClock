@@ -69,20 +69,6 @@ namespace Clock
             {
                 try
                 {
-                    //stopWaveOut();
-
-                    // 指定聲音檔的相對路徑，可以使用MP3
-                    //string audioFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "alert.wav");
-
-                    //// 使用 AudioFileReader 來讀取聲音檔
-                    //audioFileReader = new AudioFileReader(audioFilePath);
-
-                    // 初始化 WaveOutEvent
-                    //waveOut = new WaveOutEvent();
-                    //waveOut.Init(audioFileReader);
-
-                    // 播放聲音檔
-                    //waveOut.Play();
                     MessageBox.Show("時間到!");
                 }
                 catch (Exception ex)
@@ -180,6 +166,38 @@ namespace Clock
         }
 
         private void timerCountDown_Tick(object sender, EventArgs e)
+        {
+            txtCountDown.Text = ts.ToString("hh':'mm':'ss");    // 顯示時間
+            ts = ts.Subtract(TimeSpan.FromSeconds(1));          // 每一秒鐘將顯示時間減掉一秒
+            
+            if (txtCountDown.Text == "00:00:00")
+            {
+                try
+                {
+                    MessageBox.Show("時間到!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("無法播放聲音檔，錯誤資訊: " + ex.Message);
+                }
+                finally
+                {
+                    timerCountDown.Stop();         // 停止鬧鐘計時器
+                }
+            }
+        }
+
+        private void btnCountStart_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCountPause_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCountStop_Click(object sender, EventArgs e)
         {
 
         }
