@@ -54,12 +54,13 @@ namespace Clock
             this.btnlog = new System.Windows.Forms.Button();
             this.btnstop = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.cmbCountSec = new System.Windows.Forms.ComboBox();
+            this.cmbCountHour = new System.Windows.Forms.ComboBox();
+            this.cmbCountMin = new System.Windows.Forms.ComboBox();
+            this.btnCountStart = new System.Windows.Forms.Button();
+            this.btnCountPause = new System.Windows.Forms.Button();
+            this.btnCountStop = new System.Windows.Forms.Button();
+            this.timerCountDown = new System.Windows.Forms.Timer(this.components);
             this.tabControl1.SuspendLayout();
             this.Clock.SuspendLayout();
             this.Stopwatch.SuspendLayout();
@@ -197,12 +198,12 @@ namespace Clock
             // 
             // countdown_timer
             // 
-            this.countdown_timer.Controls.Add(this.button3);
-            this.countdown_timer.Controls.Add(this.button2);
-            this.countdown_timer.Controls.Add(this.button1);
-            this.countdown_timer.Controls.Add(this.comboBox1);
-            this.countdown_timer.Controls.Add(this.comboBox2);
-            this.countdown_timer.Controls.Add(this.comboBox3);
+            this.countdown_timer.Controls.Add(this.btnCountStop);
+            this.countdown_timer.Controls.Add(this.btnCountPause);
+            this.countdown_timer.Controls.Add(this.btnCountStart);
+            this.countdown_timer.Controls.Add(this.cmbCountSec);
+            this.countdown_timer.Controls.Add(this.cmbCountHour);
+            this.countdown_timer.Controls.Add(this.cmbCountMin);
             this.countdown_timer.Controls.Add(this.textBox1);
             this.countdown_timer.Location = new System.Drawing.Point(4, 22);
             this.countdown_timer.Name = "countdown_timer";
@@ -315,64 +316,69 @@ namespace Clock
             this.textBox1.Text = "00:00:00:000";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // comboBox1
+            // cmbCountSec
             // 
-            this.comboBox1.Font = new System.Drawing.Font("新細明體", 36F);
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(558, 106);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(207, 56);
-            this.comboBox1.TabIndex = 8;
+            this.cmbCountSec.Font = new System.Drawing.Font("新細明體", 36F);
+            this.cmbCountSec.FormattingEnabled = true;
+            this.cmbCountSec.Location = new System.Drawing.Point(558, 106);
+            this.cmbCountSec.Name = "cmbCountSec";
+            this.cmbCountSec.Size = new System.Drawing.Size(207, 56);
+            this.cmbCountSec.TabIndex = 8;
             // 
-            // comboBox2
+            // cmbCountHour
             // 
-            this.comboBox2.Font = new System.Drawing.Font("新細明體", 36F);
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(3, 106);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(207, 56);
-            this.comboBox2.TabIndex = 9;
+            this.cmbCountHour.Font = new System.Drawing.Font("新細明體", 36F);
+            this.cmbCountHour.FormattingEnabled = true;
+            this.cmbCountHour.Location = new System.Drawing.Point(3, 106);
+            this.cmbCountHour.Name = "cmbCountHour";
+            this.cmbCountHour.Size = new System.Drawing.Size(207, 56);
+            this.cmbCountHour.TabIndex = 9;
             // 
-            // comboBox3
+            // cmbCountMin
             // 
-            this.comboBox3.Font = new System.Drawing.Font("新細明體", 36F);
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(264, 106);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(236, 56);
-            this.comboBox3.TabIndex = 10;
+            this.cmbCountMin.Font = new System.Drawing.Font("新細明體", 36F);
+            this.cmbCountMin.FormattingEnabled = true;
+            this.cmbCountMin.Location = new System.Drawing.Point(264, 106);
+            this.cmbCountMin.Name = "cmbCountMin";
+            this.cmbCountMin.Size = new System.Drawing.Size(236, 56);
+            this.cmbCountMin.TabIndex = 10;
             // 
-            // button1
+            // btnCountStart
             // 
-            this.button1.BackColor = System.Drawing.Color.Yellow;
-            this.button1.Font = new System.Drawing.Font("新細明體", 36F);
-            this.button1.Location = new System.Drawing.Point(264, 168);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(236, 57);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "開始";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnCountStart.BackColor = System.Drawing.Color.Yellow;
+            this.btnCountStart.Font = new System.Drawing.Font("新細明體", 36F);
+            this.btnCountStart.Location = new System.Drawing.Point(264, 168);
+            this.btnCountStart.Name = "btnCountStart";
+            this.btnCountStart.Size = new System.Drawing.Size(236, 57);
+            this.btnCountStart.TabIndex = 11;
+            this.btnCountStart.Text = "開始";
+            this.btnCountStart.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // btnCountPause
             // 
-            this.button2.Font = new System.Drawing.Font("新細明體", 36F);
-            this.button2.Location = new System.Drawing.Point(264, 231);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(236, 57);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "暫停";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnCountPause.Font = new System.Drawing.Font("新細明體", 36F);
+            this.btnCountPause.Location = new System.Drawing.Point(264, 231);
+            this.btnCountPause.Name = "btnCountPause";
+            this.btnCountPause.Size = new System.Drawing.Size(236, 57);
+            this.btnCountPause.TabIndex = 12;
+            this.btnCountPause.Text = "暫停";
+            this.btnCountPause.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnCountStop
             // 
-            this.button3.BackColor = System.Drawing.Color.Red;
-            this.button3.Font = new System.Drawing.Font("新細明體", 36F);
-            this.button3.Location = new System.Drawing.Point(264, 294);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(236, 57);
-            this.button3.TabIndex = 13;
-            this.button3.Text = "停止";
-            this.button3.UseVisualStyleBackColor = false;
+            this.btnCountStop.BackColor = System.Drawing.Color.Red;
+            this.btnCountStop.Font = new System.Drawing.Font("新細明體", 36F);
+            this.btnCountStop.Location = new System.Drawing.Point(264, 294);
+            this.btnCountStop.Name = "btnCountStop";
+            this.btnCountStop.Size = new System.Drawing.Size(236, 57);
+            this.btnCountStop.TabIndex = 13;
+            this.btnCountStop.Text = "停止";
+            this.btnCountStop.UseVisualStyleBackColor = false;
+            // 
+            // timerCountDown
+            // 
+            this.timerCountDown.Interval = 1;
+            this.timerCountDown.Tick += new System.EventHandler(this.timerCountDown_Tick);
             // 
             // Form1
             // 
@@ -419,12 +425,13 @@ namespace Clock
         private System.Windows.Forms.Button btnstart;
         private System.Windows.Forms.ListBox listStopWatchLog;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.Button btnCountStop;
+        private System.Windows.Forms.Button btnCountPause;
+        private System.Windows.Forms.Button btnCountStart;
+        private System.Windows.Forms.ComboBox cmbCountSec;
+        private System.Windows.Forms.ComboBox cmbCountHour;
+        private System.Windows.Forms.ComboBox cmbCountMin;
+        private System.Windows.Forms.Timer timerCountDown;
     }
 }
 

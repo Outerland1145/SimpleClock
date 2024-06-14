@@ -15,11 +15,13 @@ namespace Clock
 {
     public partial class Form1 : Form
     {
-        private WaveOutEvent waveOut;                       // 宣告音效檔播放器
-        private AudioFileReader audioFileReader;            // 宣告音效檔讀取器
+        private WaveOutEvent waveOut;
+        private AudioFileReader audioFileReader;
         string strSelectTime;
-        List<string> StopWatchLog = new List<string>();         // 碼表紀錄清單 
+        List<string> StopWatchLog = new List<string>(); 
         Stopwatch sw = new Stopwatch();
+        bool isCountDownReset = true;
+        TimeSpan ts;
         public Form1()
         {
             InitializeComponent();
@@ -30,13 +32,27 @@ namespace Clock
         {
             // 設定小時下拉選單的選單內容，建立小時的清單，數字範圍為00-23
             for (int i = 0; i <= 23; i++)
+            {
                 cmbHour.Items.Add(string.Format("{0:00}", i));
-            cmbHour.SelectedIndex = 0;
+                cmbCountHour.Items.Add(string.Format("{0:00}", i));
+            }
+                
 
             // 設定分鐘下拉選單的選單內容，建立分鐘的清單，數字範圍為00-59
             for (int i = 0; i <= 59; i++)
+            {
                 cmbMin.Items.Add(string.Format("{0:00}", i));
+                cmbCountMin.Items.Add(string.Format("{0:00}", i));
+                cmbCountSec.Items.Add(string.Format("{0:00}", i));
+            }
+                
+
+            //倒數計時器下拉選單
+            cmbHour.SelectedIndex = 0;
             cmbMin.SelectedIndex = 0;
+            cmbCountHour.SelectedIndex = 0;
+            cmbCountMin.SelectedIndex = 0;
+            cmbCountSec.SelectedIndex = 0;
         }
 
         private void TimerClock_Tick_1(object sender, EventArgs e)
@@ -161,6 +177,11 @@ namespace Clock
                 listStopWatchLog.Items.Add(String.Format("第 {0} 筆紀錄：{1}", i.ToString(), StopWatchLog[i - 1] + "\n"));
                 i--;
             }
+        }
+
+        private void timerCountDown_Tick(object sender, EventArgs e)
+        {
+
         }
     }
 
