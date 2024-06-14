@@ -61,6 +61,7 @@ namespace Clock
             this.btnCountPause = new System.Windows.Forms.Button();
             this.btnCountStop = new System.Windows.Forms.Button();
             this.timerCountDown = new System.Windows.Forms.Timer(this.components);
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tabControl1.SuspendLayout();
             this.Clock.SuspendLayout();
             this.Stopwatch.SuspendLayout();
@@ -380,8 +381,12 @@ namespace Clock
             // 
             // timerCountDown
             // 
-            this.timerCountDown.Interval = 1;
+            this.timerCountDown.Interval = 1000;
             this.timerCountDown.Tick += new System.EventHandler(this.timerCountDown_Tick);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // Form1
             // 
@@ -435,6 +440,7 @@ namespace Clock
         private System.Windows.Forms.ComboBox cmbCountHour;
         private System.Windows.Forms.ComboBox cmbCountMin;
         private System.Windows.Forms.Timer timerCountDown;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 

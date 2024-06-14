@@ -17,6 +17,7 @@ namespace Clock
     {
         private WaveOutEvent waveOut;
         private AudioFileReader audioFileReader;
+        private string mp3FilePath;
         string strSelectTime;
         List<string> StopWatchLog = new List<string>(); 
         Stopwatch sw = new Stopwatch();
@@ -67,18 +68,7 @@ namespace Clock
             // 判斷現在時間是不是已經是鬧鐘設定時間？如果時間到了，就要播放鬧鐘聲音
             if (strSelectTime == DateTime.Now.ToString("HH:mm"))
             {
-                try
-                {
-                    MessageBox.Show("時間到!");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("無法播放聲音檔，錯誤資訊: " + ex.Message);
-                }
-                finally
-                {
-                    TimerAlert.Stop(); // 停止鬧鐘計時器
-                }
+                playAlert(TimerAlert);
             }
         }
         private void stopWaveOut()
@@ -93,7 +83,8 @@ namespace Clock
 
         private void btnSetAlert_Click(object sender, EventArgs e)
         {
-            TimerAlert.Start(); // 啟動鬧鐘計時器
+            //LoadAlert();
+            LoadAlert(1);
             btnSetAlert.Enabled = false;
             btnCancelAlert.Enabled = true;
             strSelectTime = cmbHour.SelectedItem.ToString() + ":" + cmbMin.SelectedItem.ToString(); // 擷取小時和分鐘的下拉選單文字，用來設定鬧鐘時間
@@ -172,18 +163,7 @@ namespace Clock
             
             if (txtCountDown.Text == "00:00:00")
             {
-                try
-                {
-                    MessageBox.Show("時間到!");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("無法播放聲音檔，錯誤資訊: " + ex.Message);
-                }
-                finally
-                {
-                    timerCountDown.Stop();         // 停止鬧鐘計時器
-                }
+                playAlert(timerCountDown);
             }
         }
 
@@ -198,7 +178,7 @@ namespace Clock
                 ts = new TimeSpan(Hour, Min, Sec); // 設定倒數時間
             }
             isCountDownReset = false;
-            timerCountDown.Start();
+            LoadAlert(2);
         }
 
         private void btnCountPause_Click(object sender, EventArgs e)
@@ -215,6 +195,46 @@ namespace Clock
             cmbCountHour.SelectedIndex = 0;
             cmbCountMin.SelectedIndex = 0;
             cmbCountSec.SelectedIndex = 0;
+        }
+        //讀取Mp3文件
+        private void LoadAlert(int timer_mode)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "MP3 files (*.mp3)|*.mp3|All files (*.*)|*.*";
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    mp3FilePath = openFileDialog.FileName;
+                    if(timer_mode == 1)
+                    {
+                        TimerAlert.Start();
+                    }
+                    else if(timer_mode == 2)
+                    {
+                        timerCountDown.Start();
+                    }
+                }
+            }
+        }
+        //播放Mp3文件
+        private void playAlert(System.Windows.Forms.Timer timer)
+        {
+            try
+            {
+                stopWaveOut();
+                waveOut = new WaveOutEvent();
+                audioFileReader = new AudioFileReader(mp3FilePath);
+                waveOut.Init(audioFileReader);
+                waveOut.Play();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("無法播放聲音檔，錯誤資訊: " + ex.Message);
+            }
+            finally
+            {
+                timer.Stop();
+            }
         }
     }
 
