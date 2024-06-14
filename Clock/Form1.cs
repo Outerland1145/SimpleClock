@@ -118,17 +118,27 @@ namespace Clock
 
         private void btnpause_Click(object sender, EventArgs e)
         {
-
+            sw.Stop();                  // 停止碼表，但不歸零
+            timerStopWatch.Stop();      // 停止讓碼表文字顯示  
         }
 
         private void btnreset_Click(object sender, EventArgs e)
         {
-
+            if (sw.IsRunning)
+            {
+                logRecord();
+                sw.Restart(); // 歸零碼表，碼表仍繼續進行  
+            }
+            else
+            {
+                sw.Reset(); // 如果碼表沒在跑，停止並歸零碼表
+                txtStopWatch.Text = "00:00:00:000";   // 讓碼表文字「歸零」
+            }
         }
 
         private void btnlog_Click(object sender, EventArgs e)
         {
-
+            logRecord();
         }
 
         private void btnstop_Click(object sender, EventArgs e)
@@ -139,5 +149,19 @@ namespace Clock
             listStopWatchLog.Items.Clear();       // 清空 ListBox 中的元素
             StopWatchLog.Clear();                 // 清除暫存碼表紀錄清單
         }
+        private void logRecord()
+        {
+            listStopWatchLog.Items.Clear(); // 清空 ListBox 中的元素
+            StopWatchLog.Add(txtStopWatch.Text); // 將碼表時間增加到暫存碼表紀錄清單裡
+
+            // 依照碼表紀錄清單「依照最新時間順序」顯示
+            int i = StopWatchLog.Count;
+            while (i > 0)
+            {
+                listStopWatchLog.Items.Add(String.Format("第 {0} 筆紀錄：{1}", i.ToString(), StopWatchLog[i - 1] + "\n"));
+                i--;
+            }
+        }
     }
+
 }
