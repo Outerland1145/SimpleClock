@@ -53,9 +53,17 @@ namespace Clock
             this.btnreset = new System.Windows.Forms.Button();
             this.btnlog = new System.Windows.Forms.Button();
             this.btnstop = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.Clock.SuspendLayout();
             this.Stopwatch.SuspendLayout();
+            this.countdown_timer.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -189,6 +197,13 @@ namespace Clock
             // 
             // countdown_timer
             // 
+            this.countdown_timer.Controls.Add(this.button3);
+            this.countdown_timer.Controls.Add(this.button2);
+            this.countdown_timer.Controls.Add(this.button1);
+            this.countdown_timer.Controls.Add(this.comboBox1);
+            this.countdown_timer.Controls.Add(this.comboBox2);
+            this.countdown_timer.Controls.Add(this.comboBox3);
+            this.countdown_timer.Controls.Add(this.textBox1);
             this.countdown_timer.Location = new System.Drawing.Point(4, 22);
             this.countdown_timer.Name = "countdown_timer";
             this.countdown_timer.Size = new System.Drawing.Size(768, 400);
@@ -289,6 +304,76 @@ namespace Clock
             this.btnstop.UseVisualStyleBackColor = false;
             this.btnstop.Click += new System.EventHandler(this.btnstop_Click);
             // 
+            // textBox1
+            // 
+            this.textBox1.Enabled = false;
+            this.textBox1.Font = new System.Drawing.Font("新細明體", 56F);
+            this.textBox1.Location = new System.Drawing.Point(3, 3);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(762, 97);
+            this.textBox1.TabIndex = 1;
+            this.textBox1.Text = "00:00:00:000";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Font = new System.Drawing.Font("新細明體", 36F);
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(558, 106);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(207, 56);
+            this.comboBox1.TabIndex = 8;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.Font = new System.Drawing.Font("新細明體", 36F);
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(3, 106);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(207, 56);
+            this.comboBox2.TabIndex = 9;
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.Font = new System.Drawing.Font("新細明體", 36F);
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(264, 106);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(236, 56);
+            this.comboBox3.TabIndex = 10;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Yellow;
+            this.button1.Font = new System.Drawing.Font("新細明體", 36F);
+            this.button1.Location = new System.Drawing.Point(264, 168);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(236, 57);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "開始";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("新細明體", 36F);
+            this.button2.Location = new System.Drawing.Point(264, 231);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(236, 57);
+            this.button2.TabIndex = 12;
+            this.button2.Text = "暫停";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.Red;
+            this.button3.Font = new System.Drawing.Font("新細明體", 36F);
+            this.button3.Location = new System.Drawing.Point(264, 294);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(236, 57);
+            this.button3.TabIndex = 13;
+            this.button3.Text = "停止";
+            this.button3.UseVisualStyleBackColor = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -303,6 +388,8 @@ namespace Clock
             this.Clock.PerformLayout();
             this.Stopwatch.ResumeLayout(false);
             this.Stopwatch.PerformLayout();
+            this.countdown_timer.ResumeLayout(false);
+            this.countdown_timer.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -331,6 +418,13 @@ namespace Clock
         private System.Windows.Forms.Button btnpause;
         private System.Windows.Forms.Button btnstart;
         private System.Windows.Forms.ListBox listStopWatchLog;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBox3;
     }
 }
 
