@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using NAudio.Wave;
 using System.IO;
+using System.Diagnostics;
 
 namespace Clock
 {
@@ -17,6 +18,9 @@ namespace Clock
         private WaveOutEvent waveOut;                       // 宣告音效檔播放器
         private AudioFileReader audioFileReader;            // 宣告音效檔讀取器
         string strSelectTime;
+        List<string> StopWatchLog = new List<string>();         // 碼表紀錄清單 
+        Stopwatch sw = new Stopwatch();
+        txtStopWatch.Text = "00:00:00:000";
         public Form1()
         {
             InitializeComponent();
@@ -50,20 +54,21 @@ namespace Clock
             {
                 try
                 {
-                    stopWaveOut();
+                    //stopWaveOut();
 
                     // 指定聲音檔的相對路徑，可以使用MP3
-                    string audioFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "alert.wav");
+                    //string audioFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "alert.wav");
 
-                    // 使用 AudioFileReader 來讀取聲音檔
-                    audioFileReader = new AudioFileReader(audioFilePath);
+                    //// 使用 AudioFileReader 來讀取聲音檔
+                    //audioFileReader = new AudioFileReader(audioFilePath);
 
                     // 初始化 WaveOutEvent
-                    waveOut = new WaveOutEvent();
-                    waveOut.Init(audioFileReader);
+                    //waveOut = new WaveOutEvent();
+                    //waveOut.Init(audioFileReader);
 
                     // 播放聲音檔
-                    waveOut.Play();
+                    //waveOut.Play();
+                    MessageBox.Show("時間到!");
                 }
                 catch (Exception ex)
                 {
@@ -100,5 +105,37 @@ namespace Clock
             btnSetAlert.Enabled = true;
             btnCancelAlert.Enabled = false;
         }
+
+        private void timerStopWatch_Tick(object sender, EventArgs e)
+        {
+            txtStopWatch.Text = sw.Elapsed.ToString("hh':'mm':'ss':'fff");    // 顯示碼表時間
+        }
+
+        private void btnstart_Click(object sender, EventArgs e)
+        {
+            sw.Start();             // 啟動碼表
+            timerStopWatch.Start(); // 開始讓碼表文字顯示
+        }
+
+        private void btnpause_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnreset_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnlog_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnstop_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
     }
 }
