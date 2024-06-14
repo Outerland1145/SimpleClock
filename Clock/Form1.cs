@@ -20,7 +20,6 @@ namespace Clock
         string strSelectTime;
         List<string> StopWatchLog = new List<string>();         // 碼表紀錄清單 
         Stopwatch sw = new Stopwatch();
-        txtStopWatch.Text = "00:00:00:000";
         public Form1()
         {
             InitializeComponent();
@@ -134,8 +133,11 @@ namespace Clock
 
         private void btnstop_Click(object sender, EventArgs e)
         {
-
+            sw.Reset();                           // 停止並歸零碼表
+            timerStopWatch.Stop();                // 停止讓碼表文字顯示     
+            txtStopWatch.Text = "00:00:00:000";   // 讓碼表文字「歸零」
+            listStopWatchLog.Items.Clear();       // 清空 ListBox 中的元素
+            StopWatchLog.Clear();                 // 清除暫存碼表紀錄清單
         }
-    }
     }
 }

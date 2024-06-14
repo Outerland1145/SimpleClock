@@ -212,6 +212,7 @@ namespace Clock
             this.txtStopWatch.Name = "txtStopWatch";
             this.txtStopWatch.Size = new System.Drawing.Size(756, 97);
             this.txtStopWatch.TabIndex = 0;
+            this.txtStopWatch.Text = "00:00:00:000";
             this.txtStopWatch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // timerStopWatch
