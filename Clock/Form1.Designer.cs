@@ -231,57 +231,62 @@ namespace Clock
             // 
             // btnstart
             // 
+            this.btnstart.BackColor = System.Drawing.Color.Green;
             this.btnstart.Font = new System.Drawing.Font("新細明體", 36F);
             this.btnstart.Location = new System.Drawing.Point(336, 142);
             this.btnstart.Name = "btnstart";
             this.btnstart.Size = new System.Drawing.Size(168, 63);
             this.btnstart.TabIndex = 2;
             this.btnstart.Text = "開始";
-            this.btnstart.UseVisualStyleBackColor = true;
+            this.btnstart.UseVisualStyleBackColor = false;
             this.btnstart.Click += new System.EventHandler(this.btnstart_Click);
             // 
             // btnpause
             // 
+            this.btnpause.BackColor = System.Drawing.Color.Yellow;
             this.btnpause.Font = new System.Drawing.Font("新細明體", 36F);
             this.btnpause.Location = new System.Drawing.Point(510, 142);
             this.btnpause.Name = "btnpause";
             this.btnpause.Size = new System.Drawing.Size(168, 63);
             this.btnpause.TabIndex = 3;
             this.btnpause.Text = "暫停";
-            this.btnpause.UseVisualStyleBackColor = true;
+            this.btnpause.UseVisualStyleBackColor = false;
             this.btnpause.Click += new System.EventHandler(this.btnpause_Click);
             // 
             // btnreset
             // 
+            this.btnreset.BackColor = System.Drawing.Color.Teal;
             this.btnreset.Font = new System.Drawing.Font("新細明體", 36F);
             this.btnreset.Location = new System.Drawing.Point(336, 211);
             this.btnreset.Name = "btnreset";
             this.btnreset.Size = new System.Drawing.Size(168, 63);
             this.btnreset.TabIndex = 4;
             this.btnreset.Text = "歸零";
-            this.btnreset.UseVisualStyleBackColor = true;
+            this.btnreset.UseVisualStyleBackColor = false;
             this.btnreset.Click += new System.EventHandler(this.btnreset_Click);
             // 
             // btnlog
             // 
+            this.btnlog.BackColor = System.Drawing.Color.Teal;
             this.btnlog.Font = new System.Drawing.Font("新細明體", 36F);
             this.btnlog.Location = new System.Drawing.Point(510, 211);
             this.btnlog.Name = "btnlog";
             this.btnlog.Size = new System.Drawing.Size(168, 63);
             this.btnlog.TabIndex = 5;
             this.btnlog.Text = "記錄";
-            this.btnlog.UseVisualStyleBackColor = true;
+            this.btnlog.UseVisualStyleBackColor = false;
             this.btnlog.Click += new System.EventHandler(this.btnlog_Click);
             // 
             // btnstop
             // 
-            this.btnstop.Font = new System.Drawing.Font("新細明體", 36F);
+            this.btnstop.BackColor = System.Drawing.Color.Red;
+            this.btnstop.Font = new System.Drawing.Font("新細明體", 24F);
             this.btnstop.Location = new System.Drawing.Point(336, 280);
             this.btnstop.Name = "btnstop";
             this.btnstop.Size = new System.Drawing.Size(342, 63);
             this.btnstop.TabIndex = 6;
-            this.btnstop.Text = "歸零並記錄";
-            this.btnstop.UseVisualStyleBackColor = true;
+            this.btnstop.Text = "歸零並清除所有記錄";
+            this.btnstop.UseVisualStyleBackColor = false;
             this.btnstop.Click += new System.EventHandler(this.btnstop_Click);
             // 
             // Form1
