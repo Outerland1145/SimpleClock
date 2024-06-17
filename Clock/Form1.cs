@@ -201,7 +201,7 @@ namespace Clock
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                openFileDialog.Filter = "MP3 files (*.mp3)|*.mp3|All files (*.*)|*.*";
+                openFileDialog.Filter = "WAV 檔案 (*.wav)|*.wav|MP3 檔案 (*.mp3)|*.mp3|所有檔案 (*.*)|*.*";
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     mp3FilePath = openFileDialog.FileName;
@@ -226,6 +226,7 @@ namespace Clock
                 audioFileReader = new AudioFileReader(mp3FilePath);
                 waveOut.Init(audioFileReader);
                 waveOut.Play();
+                MessageBox.Show("時間到! ");
             }
             catch (Exception ex)
             {
